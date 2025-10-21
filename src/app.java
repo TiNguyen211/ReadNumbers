@@ -1,54 +1,69 @@
 import java.util.Scanner;
 
 public class app {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int number;
+        double money = 1.0;
+        int month = 1;
+        double interesRate = 1.0;
 
-        do {
-            System.out.print("Enter a number (0 - 999): ");
-            number = scanner.nextInt();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter invesment Amout: ");
+        money = input.nextDouble();
 
-            if (number == 0) {
-                System.out.println("Chương trình đã thoát.");
-                break;
-            }
+        System.out.println("Enter number of month: ");
+        month = input.nextInt();
 
-            if (number < 0 || number > 999) {
-                System.out.println("out of ability");
-            } else {
-                System.out.println(numberToWords(number));
-            }
+        System.out.println("Enter annual interest rate in percentage: ");
+        interesRate = input.nextDouble();
 
-            System.out.println("Bấm 0 để thoát chương trình.");
-            System.out.println();
 
-        } while (true);
-    }
-
-    public static String numberToWords(int number) {
-        String[] ones = {"zero", "one", "two", "three", "four", "five",
-                "six", "seven", "eight", "nine"};
-        String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen",
-                "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-        String[] tens = {"", "", "twenty", "thirty", "forty", "fifty",
-                "sixty", "seventy", "eighty", "ninety"};
-
-        if (number < 10) {
-            return ones[number];
-        } else if (number < 20) {
-            return teens[number - 10];
-        } else if (number < 100) {
-            int ten = number / 10;
-            int one = number % 10;
-            if (one == 0) return tens[ten];
-            else return tens[ten] + " " + ones[one];
-        } else { // 100 - 999
-            int hundred = number / 100;
-            int remainder = number % 100;
-            String result = ones[hundred] + " hundred";
-            if (remainder == 0) return result;
-            else return result + " and " + numberToWords(remainder);
+        double totalInterest = 0;
+        for(int i =1; i < month; i++);
+        {
+            totalInterest += money * (interesRate / 100) / 12 * month;
         }
+        System.out.println("Total interest: " + totalInterest);
     }
-}
+    }
+
+//    import java.util.Scanner;
+//
+//public class app {
+//    public static void main(String[] args) {
+//        Scanner input = new Scanner(System.in);
+//
+//        while (true) {
+//            System.out.println("--- CHƯƠNG TRÌNH TÍNH LÃI SUẤT ---");
+//            System.out.println("Bấm 1 để bắt đầu tính lãi");
+//            System.out.println("Bấm 0 để thoát chương trình");
+//            System.out.print("Lựa chọn của bạn: ");
+//            int choice = input.nextInt();
+//
+//            if (choice == 0) {
+//                System.out.println("Chương trình đã thoát. Tạm biệt!");
+//                break;
+//            } else if (choice == 1) {
+//                System.out.print("Enter investment amount: ");
+//                double money = input.nextDouble();
+//
+//                System.out.print("Enter number of months: ");
+//                int month = input.nextInt();
+//
+//                System.out.print("Enter annual interest rate in percentage: ");
+//                double interestRate = input.nextDouble();
+//
+//                double totalInterest = 0;
+//                for (int i = 1; i <= month; i++) {
+//                    totalInterest += money * (interestRate / 100) / 12;
+//                }
+//
+//                System.out.println("Total interest: " + totalInterest);
+//                System.out.println();
+//            } else {
+//                System.out.println("Lựa chọn không hợp lệ! Vui lòng nhập 0 hoặc 1.\n");
+//            }
+//        }
+//    }
+//}
+
